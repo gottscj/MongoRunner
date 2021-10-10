@@ -2,17 +2,19 @@
 
     <PropertyGroup>
         <OutputType>Exe</OutputType>
+        <Version>2021.10.5</Version>
         <TargetFramework>net5.0</TargetFramework>
         <IsPackable>true</IsPackable>
         <PackAsTool>true</PackAsTool>
+        <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
         <ToolCommandName>MongoRunner</ToolCommandName>        
         <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
         <title>MongoDB Runner</title>
         <owners>Jonas Gottschau</owners>
-        <Description>MongoDB runner dotnet tool</Description>
+        <Description>MongoDB runner dotnet tool, runs mongodb as a dotnet tool. setup as a single node replica set to support transactions</Description>
         <PackageTags>MongoDB runner</PackageTags>
-        <PackageReleaseNotes>1.0.0.0
-            - First release
+        <PackageReleaseNotes>2021.10.5
+            - Add mongo binaries
         </PackageReleaseNotes>
         <PackageProjectUrl>https://github.com/gottscj/MongoRunner</PackageProjectUrl>
         <Authors>Jonas Gottschau</Authors>
@@ -22,5 +24,10 @@
       <PackageReference Include="CommandLineParser" Version="2.8.0" />
       <PackageReference Include="Mongo2Go" Version="3.1.3" />
     </ItemGroup>
-
+    <ItemGroup>
+        <None Include="/home/jonas/.nuget/packages/mongo2go/3.1.3/tools/mongodb*/**" Visible="false">
+            <Pack>true</Pack>
+            <PackagePath>tools/net5.0/any</PackagePath>
+        </None>
+    </ItemGroup>
 </Project>

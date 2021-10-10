@@ -20,12 +20,14 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/18/ProcessWatcher.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CmdOptions.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/1C/MongoDbDefaults.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/2/FolderSearch.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/16/ProcessControl.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/19/StringFormatExtension.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/1/FileSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LocalMongoDbProcessStarter.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/1E/MongoDbRunner.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/LocalMongoDbProcess.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/877462e3f3dc42118c2f3d3f1621795132200/79/e21a7806/FileSystemEnumerator`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/a26fe40575c8438eba25fba687b717c2c7600/91/86fc78b6/MongoClient.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/ConsoleLogger.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/adb3f4a2c57d46f9936108d658463df8aa00/E/MongoDbProcessStarter.cs" root0="SKIP_HIGHLIGHTING" />
@@ -56,7 +58,7 @@
       <option name="PROGRAM_PARAMETERS" value="-p 28000 -d $USER_HOME$/mongo" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/bin/Debug/net5.0" />
       <option name="PASS_PARENT_ENVS" value="1" />
-      <option name="USE_EXTERNAL_CONSOLE" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
       <option name="USE_MONO" value="0" />
       <option name="RUNTIME_ARGUMENTS" value="" />
       <option name="PROJECT_PATH" value="$PROJECT_DIR$/MongoRunner.csproj" />
@@ -78,7 +80,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1633783057326</updated>
-      <workItem from="1633783063893" duration="12605000" />
+      <workItem from="1633783063893" duration="20298000" />
     </task>
     <servers />
   </component>

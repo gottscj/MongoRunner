@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Threading;
 using CommandLine;
@@ -43,6 +44,7 @@ namespace MongoRunner
 
                 dataDir = Path.Combine(homePath, "mongodb", "data");
             }
+            
 
             var mongod = Process.GetProcessesByName("mongod").FirstOrDefault();
             if (mongod != null)
@@ -59,15 +61,45 @@ namespace MongoRunner
                     return;
                 }
             }
+
             
-            var mongoBin = new MongoBinaryLocator(null, null);
+            var mongoBinSearch = @"mongodb-windows*\bin"; // windows
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
+            {
+                mongoBinSearch = "mongodb-macos*/bin";
+            }
+            else if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux))
+            {
+                mongoBinSearch = "mongodb-linux*/bin";
+            }
+
+            var mongoBin = FolderSearch.CurrentExecutingDirectory().FindFolder(mongoBinSearch);
+            if (string.IsNullOrEmpty(mongoBin))
+            {
+                var mongoBinaryLocator = new MongoBinaryLocator(null, null);
+                try
+                {
+                    mongoBin = mongoBinaryLocator.Directory;
+                }
+                catch
+                {
+                    // ignored
+                }
+
+                if (string.IsNullOrEmpty(mongoBin))
+                {
+                    logger.LogDirect($"Could not find mongdb binaries: searched: {mongoBinSearch}", LogLevel.Error);
+                    return;    
+                }
+            }
+            
             var fileSystem = new FileSystem();
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) ||
                 RuntimeInformation.IsOSPlatform(OSPlatform.OSX))
             {
-                fileSystem.MakeFileExecutable(Path.Combine(mongoBin.Directory, MongoDbDefaults.MongodExecutable));
-                fileSystem.MakeFileExecutable(Path.Combine(mongoBin.Directory, MongoDbDefaults.MongoExportExecutable));
-                fileSystem.MakeFileExecutable(Path.Combine(mongoBin.Directory, MongoDbDefaults.MongoImportExecutable));
+                fileSystem.MakeFileExecutable(Path.Combine(mongoBin, MongoDbDefaults.MongodExecutable));
+                fileSystem.MakeFileExecutable(Path.Combine(mongoBin, MongoDbDefaults.MongoExportExecutable));
+                fileSystem.MakeFileExecutable(Path.Combine(mongoBin, MongoDbDefaults.MongoImportExecutable));
             }
             
             fileSystem.CreateFolder(dataDir);
@@ -79,7 +111,7 @@ namespace MongoRunner
             try
             {
                 mongoDbProcess = processStarter.Start(
-                    binariesDirectory: mongoBin.Directory,
+                    binariesDirectory: mongoBin,
                     dataDir,
                     options.Port,
                     singleNodeReplSet: true,
