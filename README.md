@@ -8,7 +8,6 @@ builds on the the excellent [Mongo2Go](https://github.com/Mongo2Go/Mongo2Go)
 ```
 dotnet tool install --global MongoRunner --version 2021.10.5
 ```
-
 # Arguments
 ```
  -v: verbose
@@ -17,4 +16,18 @@ dotnet tool install --global MongoRunner --version 2021.10.5
  
  -d: data directory to store mongo data
 ```
+# Usage
+
+- With no arguments
+```
+MongoRunner
+```
+
+- With arguments
+```
+MongoRunner -p 30000 -d c:\data
+```
+
+
+
 
