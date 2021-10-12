@@ -1,3 +1,5 @@
+[![.NET](https://github.com/gottscj/MongoRunner/actions/workflows/Build.yml/badge.svg)](https://github.com/gottscj/MongoRunner/actions/workflows/Build.yml)
+
 # MongoRunner
 dotnet tool to install and run MongoDB. will by default run a single node replica set so features such as transactions are supported
 
