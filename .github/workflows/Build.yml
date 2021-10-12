@@ -18,4 +18,4 @@ jobs:
       with:
         dotnet-version: 5.0.x
     - name: Build
-      run: dotnet build --project src/MongoRunner -c Release
+      run: dotnet build src/MongoRunner -c Release
