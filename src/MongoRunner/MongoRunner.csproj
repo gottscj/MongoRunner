@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
     <PropertyGroup>
         <OutputType>Exe</OutputType>
-        <Version>2022.01.25</Version>
+        <Version>2022.01.26</Version>
         <TargetFramework>net6.0</TargetFramework>
         <IsPackable>true</IsPackable>
         <PackAsTool>true</PackAsTool>
@@ -12,19 +12,23 @@
         <owners>Jonas Gottschau</owners>
         <Description>MongoDB runner dotnet tool, runs mongodb as a dotnet tool. setup as a single node replica set to support transactions</Description>
         <PackageTags>MongoDB runner</PackageTags>
-        <PackageReleaseNotes>2022.01.25
+        <PackageReleaseNotes>2022.01.26
             - Upgrade to net6.0
         </PackageReleaseNotes>
         <PackageProjectUrl>https://github.com/gottscj/MongoRunner</PackageProjectUrl>
         <Authors>Jonas Gottschau</Authors>
     </PropertyGroup>
-
+    <PropertyGroup>
+        <HomeDir>$(UserProfile)</HomeDir>
+        <HomeDir Condition="'$(HomeDir)' == ''">$(Home)</HomeDir>
+    </PropertyGroup>
+    
     <ItemGroup>
       <PackageReference Include="CommandLineParser" Version="2.8.0" />
       <PackageReference Include="Mongo2Go" Version="3.1.3" />
     </ItemGroup>
     <ItemGroup>
-        <None Include="/home/jonas/.nuget/packages/mongo2go/3.1.3/tools/mongodb*/**" Visible="false">
+        <None Include="$(HomeDir)/.nuget/packages/mongo2go/3.1.3/tools/mongodb*/**" Visible="false">
             <Pack>true</Pack>
             <PackagePath>tools/net6.0/any</PackagePath>
         </None>
