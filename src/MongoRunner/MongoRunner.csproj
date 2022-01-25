@@ -15,6 +15,7 @@
         <PackageReleaseNotes>2022.01.26
             - Upgrade to net6.0
         </PackageReleaseNotes>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
         <PackageProjectUrl>https://github.com/gottscj/MongoRunner</PackageProjectUrl>
         <Authors>Jonas Gottschau</Authors>
     </PropertyGroup>
