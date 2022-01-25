@@ -8,7 +8,7 @@ builds on the the excellent [Mongo2Go](https://github.com/Mongo2Go/Mongo2Go)
 # Install
 
 ```
-dotnet tool install --global MongoRunner --version 2021.10.5
+dotnet tool install --global MongoRunner --version 2022.01.25
 ```
 # Arguments
 ```

@@ -1,0 +1,47 @@
+# This is a basic workflow that is manually triggered
+
+name: release
+
+# Controls when the action will run. Workflow runs when manually triggered using the UI
+# or API.
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "version"
+        required: true
+        default: "0"
+#
+jobs:
+  build_release:
+    name: create release
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v1
+      with:
+        dotnet-version: latest
+
+    - name: Restore dependencies
+      run: dotnet restore ./src/MongoRunner
+
+    - name: Build
+      run: dotnet publish ./src/MongoRunner -c Release --no-restore -o ./release
+
+    - name: Test
+      run: dotnet test ./src/MongoRunner -c Release --no-build --verbosity normal
+
+    - name: Create Release on github
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.event.inputs.version }}
+        release_name: Release ${{ github.event.inputs.version }}
+        draft: false
+        prerelease: false
+
+    - name: Publish to nuget.org
+      run: dotnet nuget push src/MongoRunner/bin/Release/MongoRunner.*.nupkg --api-key ${{ secrets.NUGET_KEY }} --source https://api.nuget.org/v3/index.json
